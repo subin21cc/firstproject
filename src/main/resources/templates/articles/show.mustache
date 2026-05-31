@@ -8,22 +8,18 @@
     </tr>
     </thead>
     <tbody>
+    {{#article}}
     <tr>
-        <th scope="row">1</th>
-        <td colspan="2">제목1111</td>
-        <td>내용11111</td>
+        <th scope="row">{{id}}</th>
+        <td>{{title}}</td>
+        <td>{{content}}</td>
     </tr>
+    {{/article}}
     </tbody>
 </table>
 
+<a href="/articles/{{article.id}}/edit" class="btn btn-primary">Edit</a>
+<a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a>
+<a href="/articles">Go to Article List</a>
 {{>layouts/footer}}
-
-{{#article}}
-<tr>
-    <th>1</th>
-    <td>{{id}}</td>
-    <td>{{title}}</td>
-    <td>{{content}}</td>
-</tr>
-{{/article}}
 

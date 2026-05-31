@@ -1,4 +1,4 @@
-{{>layout/header}}
+{{>layouts/header}}
 <table class="table">
     <thead>
     <tr>
@@ -8,20 +8,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td colspan="2">제목1111</td>
-        <td>내용11111</td>
-    </tr>
+    {{#articles}}
+        <tr>
+            <th>{{id}}</th>
+            <td><a href="/articles/{{id}}">{{title}}</a></td>
+            <td>{{content}}</td>
+        </tr>
+    {{/articles}}
     </tbody>
 </table>
-{{>layout/footer}}
 
-{{#articleList}}
-    <tr>
-        <th>1</th>
-        <td>{{id}}</td>
-        <td>{{title}}</td>
-        <td>{{content}}</td>
-    </tr>
-{{/articleList}}
+<a href="/articles/new">New Article</a>
+
+{{>layouts/footer}}
