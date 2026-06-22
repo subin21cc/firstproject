@@ -6,8 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 // URL 연결 요청(@GetMapping)과 동시에 자동으로 임포트
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller // 컨트롤러 선언
+@RestController // 컨트롤러 선언
 public class FirstController {
 
     @GetMapping("/hi") // URL 요청 접수
@@ -20,5 +21,10 @@ public class FirstController {
     public String seeYouNext(Model model) {
         model.addAttribute("nickname", "홍길동");
         return "goodbye"; // goodbye.mustache 반환
+    }
+
+    @GetMapping("/api/hello")
+    public String hello() {
+        return "hello world!";
     }
 }

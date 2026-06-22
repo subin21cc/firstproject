@@ -4,11 +4,11 @@ import com.example.firstproject.dto.ArticleForm;
 import com.example.firstproject.entity.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import com.example.firstproject.repository.ArticleRepository;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -92,8 +92,10 @@ public class ArticleController {
     public String delete(@PathVariable Long id, RedirectAttributes rttr) {
         log.info("삭제 요청이 들어왔습니다.");
         // 1. 삭제할 대상 가져오기
-        Article target = articleRepository.findById(1L).orElse(null);
-        log.info(target.toString());
+        Article target = articleRepository.findById(id).orElse(null);
+        if (target != null) {
+            log.info(target.toString());
+        }
 
         // 2. 대상 엔티티 삭제하기
         if (target != null) {
